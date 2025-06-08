@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+struct date{
+    int day, month, year;
+};
+
+struct student{
+    int number;
+    string name;
+    float avg;
+    date d;
+};
+
+int main(){
+    const int n = 3;
+    student s[n];
+    int i;
+
+
+    for (i = 0; i < n; i++){
+        cout << "Enter name of student: ";
+        cin >> s[i].name;
+        cout << "Enter number of student: ";
+        cin >> s[i].number;
+        cout << "Enter average of student: ";
+        cin >> s[i].avg;
+        cout << "Enter birthday of student (day month year):\n";
+        cout << "Day: ";
+        cin >> s[i].d.day;
+        cout << "Month: ";
+        cin >> s[i].d.month;
+        cout << "Year: ";
+        cin >> s[i].d.year;
+        cout << "\n*********\n\n";
+    }
+
+    float sum = 0, mid;
+    for (i = 0; i < n; i++){
+        sum += s[i].avg;
+    }
+    mid = sum / n;
+    cout << "Average of avg: " << mid << endl;
+    cout << "\n*********\n\n";
+
+    cout << "Students with avg above average:\n";
+    for (i = 0; i < n; i++){
+        if (s[i].avg > mid){
+            cout << s[i].name << endl;
+        }
+    }
+    cout << "\n*********\n\n";
+
+
+    int counter = 0;
+    for (i = 0; i < n; i++){
+        if (s[i].avg < 14){
+            counter++;
+        }
+    }
+    cout << "Students with avg less than 14: " << counter << endl;
+
+    return 0;
+}
